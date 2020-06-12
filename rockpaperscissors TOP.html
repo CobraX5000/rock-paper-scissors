@@ -6,12 +6,13 @@
 </head>
 
 <body>
+    <p>Go ahead and run the function <b>game()</b> in the console <small>(f12)</small> to get started.</p>
     <script>
         let computerSelection;
         let playerSelection;
         let playerWinCount = 0;
         let computerWinCount = 0;
-        let roundCount;
+        let roundCount = 0;
         function computerPlay() {
             let determiner = Math.random();
             if (determiner < 1 / 3) {
@@ -29,12 +30,11 @@
         }
 
         function playRound() {
-            computerPlay();
-            console.log(computerSelection);
-            playerPlay();
-            console.log(playerSelection);
 
             roundCount++;
+            console.log('It is round ' + roundCount + '!')
+            computerPlay();
+            playerPlay();
 
             if (computerSelection == playerSelection) {
                 console.log("Draw!");
@@ -67,6 +67,7 @@
         }
 
         function game() {
+            console.log('There are 5 rounds.')
             playRound()
             playRound()
             playRound()
