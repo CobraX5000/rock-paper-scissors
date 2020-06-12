@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+    <title>rockpaperscissors</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script>
+        let computerSelection;
+        let playerSelection;
+        let playerWinCount = 0;
+        let computerWinCount = 0;
+        let roundCount;
+        function computerPlay() {
+            let determiner = Math.random();
+            if (determiner < 1 / 3) {
+                computerSelection = 'rock';
+            }
+            else if (determiner > 2 / 3) {
+                computerSelection = 'scissors';
+
+            } else computerSelection = 'paper';
+        }
+
+        function playerPlay() {
+            determiner = prompt('Rock, Paper, or Scissors?');
+            playerSelection = determiner.toLowerCase();
+        }
+
+        function playRound() {
+            computerPlay();
+            console.log(computerSelection);
+            playerPlay();
+            console.log(playerSelection);
+
+            roundCount++;
+
+            if (computerSelection == playerSelection) {
+                console.log("Draw!");
+            }
+            else if (computerSelection == 'rock' && playerSelection != 'paper') {
+                console.log("Player loses! Computer chose rock and you chose scissors!")
+                computerWinCount++;
+            }
+            else if (computerSelection == 'rock' && playerSelection == 'paper') {
+                console.log("Player wins! Computer chose rock and you chose paper!")
+                playerWinCount++;
+            }
+            else if (computerSelection == 'paper' && playerSelection != 'scissors') {
+                console.log("Player loses! Computer chose paper and you chose rock!")
+                computerWinCount++;
+            }
+            else if (computerSelection == 'paper' && playerSelection == 'scissors') {
+                console.log("Player wins! Computer chose paper and you chose scissors!")
+                playerWinCount++;
+            }
+            else if (computerSelection == 'scissors' && playerSelection != 'rock') {
+                console.log("Player loses! Computer chose scissors and you chose paper!")
+                computerWinCount++;
+            }
+            else if (computerSelection == 'scissors' && playerSelection == 'rock') {
+                console.log("Player wins! Computer chose scissors and you chose rock!")
+                playerWinCount++;
+
+            }
+        }
+
+        function game() {
+            playRound()
+            playRound()
+            playRound()
+            playRound()
+            playRound()
+            if (playerWinCount == computerWinCount) {
+                console.log("It's a complete draw!")
+            }
+            else if (playerWinCount > computerWinCount) {
+                console.log("The player has won, with a score of " + playerWinCount + " to " + computerWinCount + '!')
+            }
+            else { console.log("The computer has won, with a score of " + computerWinCount + "to " + playerWinCount + '1') }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
